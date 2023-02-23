@@ -40,10 +40,7 @@ module.exports = {
         brown_200: "#F1992E",
       },
       fontFamily: {
-        lato: ["Lato"],
-        inter: ["Inter", "sans-serif"],
-        plus: ["Plus Jakarta Sans"],
-        archivo: ["Archivo"],
+        hele: ["HelveticaNeueCyr"],
       },
       screens: {
         sm: "240px",
