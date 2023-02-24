@@ -1,7 +1,13 @@
 import { BsDash, BsPlus } from "react-icons/bs";
 import CustomInput from "../common/CustomInput";
 
-const Payment = ({ values, isValid, isDisabled, data, setValues }: any) => {
+const Payment = ({
+  values,
+  isValid,
+  isDisabled,
+  data,
+  setValues,
+}: any) => {
   const incrementValue = () => {
     setValues({
       ...values,
@@ -17,7 +23,6 @@ const Payment = ({ values, isValid, isDisabled, data, setValues }: any) => {
       });
     }
   };
-  console.log(isDisabled);
   return (
     <>
       <div className="bg-white lg:w-[480px] md:w-auto sm:w-auto py-[24px] px-[16px]">

@@ -9,9 +9,23 @@ import { fetchPageDetailsRequest } from "../store/pageDetails";
 const Checkout = () => {
   const { page_ref } = useParams<{ page_ref: any }>();
   const dispatch = useDispatch();
+  const [toastMessage, setToastMessage] = useState("");
+
+  function showToast(message: any) {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage("");
+    }, 3000);
+  }
 
   const pageDetails = useSelector((state: any) => state.pageDetails);
-  const { data, isLoading } = pageDetails;
+  const { data, error } = pageDetails;
+
+  useEffect(() => {
+    if (error) {
+      showToast("An error occured");
+    }
+  }, [error]);
 
   useEffect(() => {
     dispatch(fetchPageDetailsRequest(page_ref));
@@ -59,6 +73,10 @@ const Checkout = () => {
   };
   return (
     <>
+      <div className={`toast ${toastMessage ? "show" : ""}`}>
+        {toastMessage}
+      </div>
+
       <form onSubmit={handleFormSubmit}>
         <div className="flex gap-[16px] md:flex-row sm:flex-col">
           <div>
@@ -71,7 +89,6 @@ const Checkout = () => {
               data={data}
               isDisabled={isDisabled}
               isValid={isEmailValid}
-              isLoading={isLoading}
               type="submit"
               values={values}
               setValues={setValues}

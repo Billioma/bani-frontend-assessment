@@ -25,7 +25,7 @@ const PageLayout = ({ children }: IChildren) => {
     <div className="font-hele font-[400] flex pb-[40px] flex-col min-h-screen bg-[#f5f6fa] text-black">
       <div
         className={`flex flex-col items-center justify-center mx-auto mb-[33px] w-[50%] ${
-          min ? "pt-[131px]" : "pt-[80px]"
+          min ? "pt-[111px]" : "pt-[80px]"
         }  min-h-screen flex-1"`}
       >
         {children}

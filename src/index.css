@@ -31,3 +31,22 @@
   font-style: normal;
   font-display: swap;
 }
+
+.toast {
+  position: fixed;
+  top: 10px;
+  right: 0;
+  transform: translateX(-50%);
+  background-color: red;
+  color: #fff;
+  padding: 16px 25px 16px 25px;
+  border-radius: 6px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
