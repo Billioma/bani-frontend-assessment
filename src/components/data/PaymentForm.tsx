@@ -12,7 +12,7 @@ const PaymentForm = ({ values, setValues }: any) => {
             Your phone number <span className="text-red">*</span>
           </div>
 
-          <div className="flex items-center gap-[25px] mt-[16px] w-full">
+          <div className="flex items-center gap-[20px] mt-[16px] w-full">
             <span className="border w-[175px] rounded-md border-[#C1C1C1]">
               <div className="flex items-center p-[11px] justify-between">
                 <span className="flex gap-[8px]">
@@ -45,7 +45,7 @@ const PaymentForm = ({ values, setValues }: any) => {
             Your full name <span className="text-red">*</span>
           </div>
 
-          <div className="flex items-center gap-[25px]">
+          <div className="flex items-center gap-[20px]">
             <span className="w-full">
               <CustomInput
                 placeholder="First name"
