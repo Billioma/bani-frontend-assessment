@@ -10,16 +10,25 @@ const Checkout = () => {
   const { page_ref } = useParams<{ page_ref: any }>();
   const dispatch = useDispatch();
   const [toastMessage, setToastMessage] = useState("");
+  const pageDetails = useSelector((state: any) => state.pageDetails);
+  const { data, error } = pageDetails;
 
-  function showToast(message: any) {
+  const [values, setValues] = useState({
+    customer_phone: "",
+    customer_email: "",
+    paymentAmount: "",
+    customer_first_name: "",
+    customer_last_name: "",
+    message: "",
+    paymentQuantity: 1,
+  });
+
+  const showToast = (message: any) => {
     setToastMessage(message);
     setTimeout(() => {
       setToastMessage("");
     }, 3000);
-  }
-
-  const pageDetails = useSelector((state: any) => state.pageDetails);
-  const { data, error } = pageDetails;
+  };
 
   useEffect(() => {
     if (error) {
@@ -31,15 +40,6 @@ const Checkout = () => {
     dispatch(fetchPageDetailsRequest(page_ref));
   }, [dispatch, page_ref]);
 
-  const [values, setValues] = useState({
-    customer_phone: "",
-    customer_email: "",
-    paymentAmount: "",
-    customer_first_name: "",
-    customer_last_name: "",
-    message: "",
-    paymentQuantity: 1,
-  });
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isEmailValid = emailRegex.test(values.customer_email);
   const isDisabled =
@@ -81,7 +81,11 @@ const Checkout = () => {
         <div className="flex gap-[16px] md:flex-row sm:flex-col">
           <div>
             <Design />
-            <PaymentForm values={values} setValues={setValues} />
+            <PaymentForm
+              isValid={isEmailValid}
+              values={values}
+              setValues={setValues}
+            />
           </div>
 
           <div className="w-full">

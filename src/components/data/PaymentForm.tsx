@@ -1,8 +1,10 @@
 import { flag } from "../../assets/exports";
 import { IoIosArrowDown } from "react-icons/io";
+import { useState } from "react";
 import CustomInput from "../common/CustomInput";
 
-const PaymentForm = ({ values, setValues }: any) => {
+const PaymentForm = ({ values, isValid, setValues }: any) => {
+  const [error, setError] = useState(false);
   return (
     <>
       <div className="bg-white mt-[16px] pt-[12px] pb-[24px] px-[16px]">
@@ -81,6 +83,7 @@ const PaymentForm = ({ values, setValues }: any) => {
           </div>
           <CustomInput
             type="email"
+            onBlur={() => (isValid ? setError(false) : setError(true))}
             placeholder="e.g rodney@gmail.com"
             value={values.customer_email}
             onChange={(e: any) =>
@@ -90,6 +93,13 @@ const PaymentForm = ({ values, setValues }: any) => {
               })
             }
           />
+          <span
+            className={` ${
+              !error ? "hidden" : "flex"
+            } mt-[3px] text-[12px] text-red`}
+          >
+            Invalid email
+          </span>
         </div>
 
         <div>
