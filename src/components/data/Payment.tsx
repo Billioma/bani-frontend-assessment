@@ -58,6 +58,7 @@ const Payment = ({ values, data, setValues }: any) => {
               <div className="w-full">
                 <CustomInput
                   value={values.paymentAmount}
+                  placeholder="1,000"
                   onChange={(e: any) =>
                     setValues({
                       ...values,
