@@ -26,6 +26,13 @@ const Checkout = () => {
     message: "",
     paymentQuantity: 1,
   });
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isEmailValid = emailRegex.test(values.customer_email);
+  const isDisabled =
+    !values.customer_phone ||
+    !values.customer_email ||
+    !values.customer_first_name ||
+    !values.customer_last_name;
 
   const handleFormSubmit = (event: any) => {
     event.preventDefault();
@@ -51,7 +58,7 @@ const Checkout = () => {
     });
   };
   return (
-    <div>
+    <>
       <form onSubmit={handleFormSubmit}>
         <div className="flex gap-[16px] md:flex-row sm:flex-col">
           <div>
@@ -62,6 +69,8 @@ const Checkout = () => {
           <div className="w-full">
             <Payment
               data={data}
+              isDisabled={isDisabled}
+              isValid={isEmailValid}
               isLoading={isLoading}
               type="submit"
               values={values}
@@ -70,7 +79,7 @@ const Checkout = () => {
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 
