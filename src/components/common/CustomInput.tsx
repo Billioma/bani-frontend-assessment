@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomInput = ({ value, area, setValue, placeholder }: any) => {
+const CustomInput = ({ value, area, onChange, opt, placeholder }: any) => {
   return (
     <div>
       {area ? (
@@ -8,14 +8,16 @@ const CustomInput = ({ value, area, setValue, placeholder }: any) => {
           className="border w-full h-[104px] border-[#C1C1C1] bg-[#FDFDFD] p-[11px] rounded-md placeholder:text-[#C1C1C1]"
           placeholder={placeholder}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={onChange}
         />
       ) : (
         <input
-          className="border w-full border-[#C1C1C1] p-[11px] rounded-md placeholder:text-[#C1C1C1]"
+          className={`border w-full border-[#C1C1C1] ${
+            opt && "border-0"
+          } p-[11px] rounded-md placeholder:text-[#C1C1C1]`}
           placeholder={placeholder}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={onChange}
         />
       )}
     </div>

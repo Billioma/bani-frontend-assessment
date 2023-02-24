@@ -2,7 +2,7 @@ import { flag } from "../../assets/exports";
 import { IoIosArrowDown } from "react-icons/io";
 import CustomInput from "../common/CustomInput";
 
-const Form = () => {
+const PaymentForm = ({ values, setValues }: any) => {
   return (
     <>
       <div className="bg-white mt-[16px] pt-[12px] pb-[24px] px-[16px]">
@@ -25,7 +25,16 @@ const Form = () => {
               </div>
             </span>
             <span className="w-[248px]">
-              <CustomInput placeholder="09389334332" />
+              <CustomInput
+                value={values.customer_phone}
+                onChange={(e: any) =>
+                  setValues({
+                    ...values,
+                    customer_phone: e.target.value,
+                  })
+                }
+                placeholder="09389334332"
+              />
             </span>
           </div>
         </div>
@@ -37,10 +46,28 @@ const Form = () => {
 
           <div className="flex items-center gap-[25px]">
             <span className="w-full">
-              <CustomInput placeholder="First name" />
+              <CustomInput
+                placeholder="First name"
+                value={values.customer_first_name}
+                onChange={(e: any) =>
+                  setValues({
+                    ...values,
+                    customer_first_name: e.target.value,
+                  })
+                }
+              />
             </span>
             <span className="w-full">
-              <CustomInput placeholder="Last name" />
+              <CustomInput
+                placeholder="Last name"
+                value={values.customer_last_name}
+                onChange={(e: any) =>
+                  setValues({
+                    ...values,
+                    customer_last_name: e.target.value,
+                  })
+                }
+              />
             </span>
           </div>
         </div>
@@ -49,16 +76,35 @@ const Form = () => {
           <div className="my-[16px] text-[14px]">
             Email address <span className="text-red">*</span>
           </div>
-          <CustomInput placeholder="e.g rodney@gmail.com" />
+          <CustomInput
+            placeholder="e.g rodney@gmail.com"
+            value={values.customer_email}
+            onChange={(e: any) =>
+              setValues({
+                ...values,
+                customer_email: e.target.value,
+              })
+            }
+          />
         </div>
 
         <div>
           <div className="my-[16px] text-[14px]">Your message</div>
-          <CustomInput area placeholder="Write a message here" />
+          <CustomInput
+            area
+            placeholder="Write a message here"
+            value={values.message}
+            onChange={(e: any) =>
+              setValues({
+                ...values,
+                message: e.target.value,
+              })
+            }
+          />
         </div>
       </div>
     </>
   );
 };
 
-export default Form;
+export default PaymentForm;
