@@ -2,14 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { takeLatest, put, call } from "redux-saga/effects";
 import axios from "axios";
 
-export interface PageDetails {
-  page_amount: "";
-  first_name: "";
-  name: "";
-}
-
 export interface PageDetailsState {
-  data: PageDetails | null;
+  data: any | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -28,7 +22,7 @@ const pageDetailsSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     },
-    fetchPageDetailsSuccess(state, action: PayloadAction<PageDetails>) {
+    fetchPageDetailsSuccess(state, action: PayloadAction<any>) {
       state.isLoading = false;
       state.error = null;
       state.data = action.payload;
@@ -58,7 +52,7 @@ function* fetchPageDetails(
       axios.get,
       `https://stage.getbani.com/api/v1/comhub/direct_payment_page_details/${action.payload}`
     );
-    const pageDetails: PageDetails = response.data;
+    const pageDetails: any = response.data;
     yield put(fetchPageDetailsSuccess(pageDetails));
   } catch (error: any) {
     yield put(fetchPageDetailsFailure(error.message));

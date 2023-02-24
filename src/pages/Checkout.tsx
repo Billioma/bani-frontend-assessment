@@ -11,12 +11,10 @@ const Checkout = () => {
   const dispatch = useDispatch();
 
   const pageDetails = useSelector((state: any) => state.pageDetails);
-  const { data } = pageDetails;
+  const { data, isLoading } = pageDetails;
 
   useEffect(() => {
-    if (page_ref) {
-      dispatch(fetchPageDetailsRequest(page_ref));
-    }
+    dispatch(fetchPageDetailsRequest(page_ref));
   }, [dispatch, page_ref]);
 
   const [values, setValues] = useState({
@@ -52,7 +50,6 @@ const Checkout = () => {
       },
     });
   };
-
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
@@ -65,6 +62,7 @@ const Checkout = () => {
           <div className="w-full">
             <Payment
               data={data}
+              isLoading={isLoading}
               type="submit"
               values={values}
               setValues={setValues}
