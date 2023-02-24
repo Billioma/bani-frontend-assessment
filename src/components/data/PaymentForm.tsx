@@ -27,6 +27,7 @@ const PaymentForm = ({ values, setValues }: any) => {
             <span className="w-[248px]">
               <CustomInput
                 value={values.customer_phone}
+                type="number"
                 onChange={(e: any) =>
                   setValues({
                     ...values,
@@ -48,6 +49,7 @@ const PaymentForm = ({ values, setValues }: any) => {
             <span className="w-full">
               <CustomInput
                 placeholder="First name"
+                type="text"
                 value={values.customer_first_name}
                 onChange={(e: any) =>
                   setValues({
@@ -60,6 +62,7 @@ const PaymentForm = ({ values, setValues }: any) => {
             <span className="w-full">
               <CustomInput
                 placeholder="Last name"
+                type="text"
                 value={values.customer_last_name}
                 onChange={(e: any) =>
                   setValues({
@@ -77,6 +80,7 @@ const PaymentForm = ({ values, setValues }: any) => {
             Email address <span className="text-red">*</span>
           </div>
           <CustomInput
+            type="email"
             placeholder="e.g rodney@gmail.com"
             value={values.customer_email}
             onChange={(e: any) =>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomInput = ({ value, area, onChange, opt, placeholder }: any) => {
+const CustomInput = ({ value, area, onChange, type, opt, placeholder }: any) => {
   return (
     <div>
       {area ? (
@@ -16,6 +16,7 @@ const CustomInput = ({ value, area, onChange, opt, placeholder }: any) => {
             opt && "border-0"
           } p-[11px] rounded-md placeholder:text-[#C1C1C1]`}
           placeholder={placeholder}
+          type={type}
           value={value}
           onChange={onChange}
         />
